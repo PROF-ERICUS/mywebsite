@@ -158,6 +158,45 @@ footer {
     display: none;
   }
 }
+/* Add this at the end to ensure all page sections are responsive */
+@media (max-width: 480px) {
+  .about {
+    padding: 2rem 1rem;
+  }
+
+  .about-image img {
+    max-width: 100%;
+  }
+
+  .about-text {
+    font-size: 0.9rem;
+  }
+
+  .cv-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+/* Optional: Add a simple mobile nav toggle */
+@media (max-width: 768px) {
+  nav {
+    display: none;
+  }
+
+  /* You can add a menu button and toggle nav display in JS later */
+}
+
 
 /* ===== Theme Toggle Button ===== */
 #theme-toggle {
@@ -200,5 +239,6 @@ body {
     background: var(--card-bg);
     transition: background 0.3s ease, color 0.3s ease;
 }
+
 
 
