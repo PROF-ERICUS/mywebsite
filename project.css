@@ -13,6 +13,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-size: 16px; /* base font size */
 }
 
 /* ===== Header ===== */
@@ -26,30 +27,50 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
+  flex-wrap: wrap; /* allows wrap on smaller screens */
+  gap: 10px;
 }
 
 .logo {
   font-size: 1.4rem;
   font-weight: 800;
   color: #2c3e50;
+  flex: 1 1 150px;
+  min-width: 140px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  flex: 2 1 400px;
+  justify-content: center;
+  min-width: 220px;
 }
 
 nav a {
-  margin: 0 12px;
-  text-decoration: none;
   font-weight: 500;
   color: #555;
+  text-decoration: none;
   transition: color 0.3s ease;
+  white-space: nowrap;
+  padding: 6px 10px;
+  border-radius: 4px;
 }
 
 nav a:hover,
 nav a.active {
   color: #0077cc;
+  background-color: rgba(0, 119, 204, 0.1);
 }
 
 .actions {
   display: flex;
   align-items: center;
+  gap: 10px;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  min-width: 120px;
 }
 
 #theme-toggle {
@@ -58,6 +79,14 @@ nav a.active {
   font-size: 1.2rem;
   margin-right: 10px;
   cursor: pointer;
+  color: #2c3e50;
+  padding: 6px 8px;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+#theme-toggle:hover {
+  background-color: rgba(0, 119, 204, 0.15);
 }
 
 .cv-btn {
@@ -68,6 +97,7 @@ nav a.active {
   text-decoration: none;
   font-weight: 600;
   transition: background 0.3s ease;
+  white-space: nowrap;
 }
 
 .cv-btn:hover {
@@ -78,6 +108,8 @@ nav a.active {
 .content {
   flex: 1;
   padding: 50px 8%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .content h2 {
@@ -116,8 +148,8 @@ footer {
   text-align: center;
   padding: 15px;
   font-size: 0.9rem;
-  border-top: 1px solid var(--border-color);
-  background: var(--card-bg);
+  border-top: 1px solid #ddd;
+  background: #fff;
 }
 
 /* ===== Dark Mode ===== */
@@ -132,7 +164,7 @@ body.dark-mode header {
 }
 
 body.dark-mode .logo {
-  color: #ffffff;
+  color: #fff;
 }
 
 body.dark-mode nav a {
@@ -142,6 +174,7 @@ body.dark-mode nav a {
 body.dark-mode nav a.active,
 body.dark-mode nav a:hover {
   color: #66aaff;
+  background-color: rgba(102, 170, 255, 0.15);
 }
 
 body.dark-mode .cv-btn {
@@ -155,53 +188,13 @@ body.dark-mode .project {
 
 body.dark-mode footer {
   background-color: #111;
+  border-top-color: #333;
 }
 
-/* ===== Theme Toggle Button ===== */
-#theme-toggle {
-    cursor: pointer;
-    border: none;
-    background: var(--primary-color);
-    color: white;
-    font-size: 1rem;
-    padding: 8px 14px;
-    border-radius: 30px;
-    transition: background 0.3s ease, transform 0.2s ease;
-}
-
-#theme-toggle:hover {
-    background: var(--primary-dark);
-    transform: scale(1.05);
-}
-
-/* ===== Dark Theme Styles ===== */
-body.dark-theme {
-    --primary-color: #1e1e2f;
-    --primary-dark: #151520;
-    --text-color: #e0e0e0;
-    --background-color: #121212;
-    --card-bg: #1f1f2e;
-}
-
-body {
-    --primary-color: #007BFF;
-    --primary-dark: #0056b3;
-    --text-color: #222;
-    --background-color: #f4f4f4;
-    --card-bg: white;
-    background: var(--background-color);
-    color: var(--text-color);
-}
-
-/* Apply to cards, sections, etc. */
-.card, section, footer, header {
-    background: var(--card-bg);
-    transition: background 0.3s ease, color 0.3s ease;
-}
-
+/* ===== Button ===== */
 .btn {
   display: inline-block;
-  background-color: #007bff;  /* Blue color */
+  background-color: #007bff;
   color: white;
   padding: 8px 16px;
   border-radius: 4px;
@@ -211,8 +204,61 @@ body {
 }
 
 .btn:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3;
 }
 
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .content {
+    padding: 40px 5%;
+  }
+  nav {
+    justify-content: center;
+  }
+}
 
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  nav {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .content {
+    padding: 30px 5%;
+  }
+}
 
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  header .logo {
+    font-size: 1.2rem;
+  }
+  nav a {
+    font-size: 0.9rem;
+    padding: 6px 8px;
+  }
+  .cv-btn {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+  .content {
+    padding: 20px 3%;
+  }
+  .project-list {
+    gap: 15px;
+  }
+  .btn {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}
