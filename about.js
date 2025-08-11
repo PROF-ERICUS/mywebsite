@@ -2,44 +2,43 @@
 // Portfolio JavaScript
 // =======================
 
-// Auto-update year in footer
-document.addEventListener("DOMContentLoaded", function () {
-    const footerYear = document.querySelector("footer p");
-    if (footerYear) {
-        const currentYear = new Date().getFullYear();
-        footerYear.innerHTML = `&copy; ${currentYear} Eric Andoh. All Rights Reserved.`;
-    }
-});
-
-// === Auto-update footer year ===
 document.addEventListener("DOMContentLoaded", () => {
+    // === Auto-update footer year ===
     const yearSpan = document.querySelector("#currentYear");
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
-});
 
-// === Theme Toggle ===
-const themeToggle = document.getElementById("theme-toggle");
-themeToggle?.addEventListener("click", () => {
-    document.body.classList.toggle("dark-theme");
+    // === Theme Toggle ===
+    const themeToggle = document.getElementById("theme-toggle");
+    const savedTheme = localStorage.getItem("theme");
 
-    // Save theme preference in localStorage
-    if (document.body.classList.contains("dark-theme")) {
-        localStorage.setItem("theme", "dark");
-        themeToggle.textContent = "☀️";
-    } else {
-        localStorage.setItem("theme", "light");
-        themeToggle.textContent = "🌙";
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark-theme");
+        if (themeToggle) themeToggle.textContent = "☀️";
     }
+
+    themeToggle?.addEventListener("click", () => {
+        document.body.classList.toggle("dark-theme");
+        const isDark = document.body.classList.contains("dark-theme");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+        themeToggle.textContent = isDark ? "☀️" : "🌙";
+    });
+
+    // === Mobile Menu Toggle ===
+    const menuToggle = document.querySelector("header .menu-toggle");
+    const nav = document.querySelector("header nav");
+
+    menuToggle?.addEventListener("click", () => {
+        const isActive = nav.classList.toggle("active");
+        menuToggle.setAttribute("aria-expanded", isActive);
+    });
+
+    // Optional: Close menu on ESC
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && nav.classList.contains("active")) {
+            nav.classList.remove("active");
+            menuToggle.setAttribute("aria-expanded", "false");
+        }
+    });
 });
-
-const menuToggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('header nav');
-
-menuToggle.addEventListener('click', () => {
-  nav.classList.toggle('active');
-});
-
-
-}
