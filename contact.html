@@ -35,21 +35,20 @@
   </header>
 
   <main class="content">
-    <section class="contact-section">
-      <h2>Contact Me</h2>
-      <p>If you have any questions, project ideas, or collaboration requests, feel free to reach out using the form below.</p>
-      
-      <form id="contactForm" action="https://formspree.io/f/manbazke" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </section>
+    <h2>Contact Me</h2>
+    <form id="contactForm" action="https://formspree.io/f/manbazke" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
   </main>
 
   <footer>
-    <p>&copy; <span id="currentYear">2025</span> Eric Andoh. All rights reserved.</p>
+    <p>&copy; <span id="currentYear"></span> Eric Andoh. All rights reserved.</p>
   </footer>
+
+  <!-- Scripts -->
+  <script src="contact.js"></script>
 </body>
 </html>
