@@ -152,49 +152,79 @@ footer {
   background: #fff;
 }
 
-/* ===== Dark Mode ===== */
-body.dark-mode {
-  background-color: #1e1e1e;
-  color: #f5f5f5;
+/* ===== Mobile Menu Toggle Button ===== */
+.menu-toggle {
+  display: none; /* Hidden by default */
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #2c3e50;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
-body.dark-mode header {
-  background-color: #2a2a2a;
-  border-bottom-color: #444;
+.menu-toggle:hover {
+  background-color: rgba(0, 119, 204, 0.15);
 }
 
-body.dark-mode .logo {
-  color: #fff;
+/* ===== Responsive Updates ===== */
+@media (max-width: 768px) {
+  /* Show hamburger toggle */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Hide nav by default */
+  nav {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    gap: 0;
+    transition: max-height 0.3s ease;
+    border-top: 1px solid #ddd;
+  }
+
+  /* When nav is active (toggled), show links */
+  nav.active {
+    max-height: 500px; /* enough height for links */
+    overflow: visible;
+    padding: 10px 0;
+  }
+
+  nav a {
+    padding: 12px 20px;
+    border-bottom: 1px solid #eee;
+  }
+
+  nav a:last-child {
+    border-bottom: none;
+  }
+  
+  /* Adjust actions container */
+  .actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  /* Adjust header layout */
+  header {
+    flex-wrap: nowrap;
+  }
 }
 
-body.dark-mode nav a {
-  color: #ccc;
-}
-
-body.dark-mode nav a.active,
-body.dark-mode nav a:hover {
-  color: #66aaff;
-  background-color: rgba(102, 170, 255, 0.15);
-}
-
-body.dark-mode .cv-btn {
-  background-color: #66aaff;
-}
-
-body.dark-mode .project {
-  background-color: #2a2a2a;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-}
-
-body.dark-mode footer {
-  background-color: #111;
-  border-top-color: #333;
-}
-
-/* ===== Button ===== */
-.btn {
+  .project-list {
+    gap: 15px;
+  }
+  .btn {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+  .btn {
   display: inline-block;
-  background-color: #007bff;
+  background-color: #007bff;  /* Blue color */
   color: white;
   padding: 8px 16px;
   border-radius: 4px;
@@ -204,61 +234,7 @@ body.dark-mode footer {
 }
 
 .btn:hover {
-  background-color: #0056b3;
+  background-color: #0056b3; /* Darker blue on hover */
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 1024px) {
-  .content {
-    padding: 40px 5%;
-  }
-  nav {
-    justify-content: center;
-  }
-}
 
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-  nav {
-    width: 100%;
-    justify-content: flex-start;
-  }
-  .actions {
-    width: 100%;
-    justify-content: flex-start;
-  }
-  .content {
-    padding: 30px 5%;
-  }
-}
-
-@media (max-width: 480px) {
-  body {
-    font-size: 14px;
-  }
-  header .logo {
-    font-size: 1.2rem;
-  }
-  nav a {
-    font-size: 0.9rem;
-    padding: 6px 8px;
-  }
-  .cv-btn {
-    padding: 6px 12px;
-    font-size: 0.9rem;
-  }
-  .content {
-    padding: 20px 3%;
-  }
-  .project-list {
-    gap: 15px;
-  }
-  .btn {
-    padding: 6px 12px;
-    font-size: 0.9rem;
-  }
-}
