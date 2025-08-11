@@ -1,336 +1,190 @@
-/* ===== Global Styles ===== */
+/* === RESET === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
-  background: var(--bg-color);
-  color: var(--text-color);
-  transition: background 0.3s, color 0.3s;
-  font-size: 16px; /* base font size */
+  background-color: var(--bg-color,  #f5f7fa);
+  color: var(--text-color, #111);
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/* ===== Theme Colors ===== */
-:root {
-  --bg-color: #f8f9fa;
-  --text-color: #222;
-  --primary-color: #0077ff;
-  --secondary-color: #555;
-  --card-bg: #fff;
-  --border-color: #ddd;
-}
-
-body.dark {
-  --bg-color: #1a1a1a;
-  --text-color: #f5f5f5;
-  --card-bg: #2a2a2a;
-  --border-color: #444;
-}
-
-/* ===== Header ===== */
+/* === HEADER === */
 header {
-  background: var(--card-bg);
-  padding: 15px 8%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--border-color);
-  flex-wrap: wrap; /* allow wrapping on small screens */
-  gap: 10px;
+  padding: 15px 5%;
+  background-color: var(--bg-color);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  flex: 1 1 auto;
-  min-width: 150px;
+  font-weight: 800;
+  font-size: 1.3rem;
 }
 
 nav {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  flex: 2 1 400px;
-  min-width: 200px;
+  gap: 1.5rem;
 }
 
 nav a {
-  color: var(--text-color);
-  font-weight: 500;
   text-decoration: none;
+  color: var(--text-color, #111);
+  font-weight: 500;
   transition: color 0.3s;
-  white-space: nowrap;
-  padding: 6px 10px;
-  border-radius: 4px;
 }
 
 nav a:hover,
 nav a.active {
-  color: var(--primary-color);
-  background-color: rgba(0, 119, 255, 0.1);
+  color: #007bff;
 }
 
+/* === ACTION BUTTONS === */
 .actions {
   display: flex;
   align-items: center;
-  gap: 10px;
-  flex: 1 1 auto;
-  justify-content: flex-end;
-  min-width: 120px;
+  gap: 0.5rem;
+}
+
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
 }
 
 .cv-btn {
-  padding: 8px 15px;
-  background: var(--primary-color);
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
   color: #fff;
-  text-decoration: none;
+  font-weight: 600;
   border-radius: 5px;
+  text-decoration: none;
   transition: background 0.3s;
-  white-space: nowrap;
 }
 
 .cv-btn:hover {
-  background: #005fcc;
+  background-color: #0056b3;
 }
 
-#theme-toggle {
+/* === MENU TOGGLE (MOBILE) === */
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
   background: none;
   border: none;
-  font-size: 1.2rem;
   cursor: pointer;
-  color: var(--primary-color);
-  padding: 6px 8px;
-  border-radius: 50%;
-  transition: background 0.3s;
 }
 
-#theme-toggle:hover {
-  background: rgba(0, 119, 255, 0.15);
+/* === CONTENT === */
+main.content {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
-/* ===== Content ===== */
-section.content {
-  max-width: 900px;
-  margin: 50px auto;
-  padding: 20px;
-  background: var(--card-bg);
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+main h2 {
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
-h2 {
-  margin-bottom: 20px;
-  font-size: 2rem;
-  color: var(--primary-color);
-}
-
-/* ===== Form ===== */
 form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 1rem;
 }
 
-form input,
-form textarea {
-  padding: 12px;
-  border: 1px solid var(--border-color);
-  border-radius: 5px;
-  background: var(--bg-color);
-  color: var(--text-color);
+input, textarea, button {
+  padding: 0.8rem;
   font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
 }
 
-form button {
-  padding: 12px;
+textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: 600;
   border: none;
-  background: var(--primary-color);
-  color: white;
-  font-size: 1rem;
-  border-radius: 5px;
   cursor: pointer;
-  transition: background 0.3s;
 }
 
-form button:hover {
-  background: #005fcc;
+button[type="submit"]:hover {
+  background-color: #0056b3;
 }
 
-/* ===== Footer ===== */
+/* === FOOTER === */
 footer {
   text-align: center;
-  padding: 15px;
+  padding: 1rem;
+  border-top: 1px solid #ddd;
   font-size: 0.9rem;
-  border-top: 1px solid var(--border-color);
-  background: var(--card-bg);
 }
 
-/* ===== Responsive Enhancements ===== */
-
-/* Large tablets and smaller desktops */
-@media (max-width: 1024px) {
-  header {
-    padding: 15px 5%;
-  }
-  nav a {
-    margin: 0;
-    font-size: 0.95rem;
-  }
-  section.content {
-    max-width: 90%;
-    margin: 40px auto;
-    padding: 15px;
-  }
+/* === DARK THEME === */
+.dark-theme {
+  --bg-color: #121212;
+  --text-color: #f1f1f1;
+  --header-bg: #1e1e1e;
 }
 
-/* Tablets and large phones */
+.dark-theme nav a:hover {
+  color: #66b2ff;
+}
+
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  nav {
-    width: 100%;
-    justify-content: flex-start;
-    gap: 10px;
-  }
-  nav a {
-    padding: 6px 8px;
-  }
-  section.content {
-    margin: 30px 15px;
-    padding: 15px;
-  }
-  .actions {
-    width: 100%;
-    justify-content: flex-start;
-  }
-}
-
-/* Very small devices (phones) */
-@media (max-width: 480px) {
-  body {
-    font-size: 14px;
-  }
-  nav a {
-    font-size: 0.85rem;
-    padding: 6px 6px;
-  }
-  .cv-btn {
-    padding: 8px 12px;
-    font-size: 0.9rem;
-  }
-  section.content {
-    margin: 20px 10px;
-    padding: 10px;
-  }
-}
-
-/* ===== Theme Toggle Button ===== */
-#theme-toggle {
-  cursor: pointer;
-  border: none;
-  background: var(--primary-color);
-  color: white;
-  font-size: 1rem;
-  padding: 8px 14px;
-  border-radius: 30px;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-#theme-toggle:hover {
-  background: var(--primary-dark);
-  transform: scale(1.05);
-}
-
-/* ===== Dark Theme Styles ===== */
-body.dark-theme {
-  --primary-color: #1e1e2f;
-  --primary-dark: #151520;
-  --text-color: #e0e0e0;
-  --background-color: #121212;
-  --card-bg: #1f1f2e;
-}
-
-body {
-  --primary-color: #007BFF;
-  --primary-dark: #0056b3;
-  --text-color: #222;
-  --background-color: #f4f4f4;
-  --card-bg: white;
-  background: var(--background-color);
-  color: var(--text-color);
-}
-
-/* Apply to cards, sections, etc. */
-.card, section, footer, header {
-  background: var(--card-bg);
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-/* ===== Mobile Menu Toggle Button ===== */
-.menu-toggle {
-  display: none; /* Hidden on larger screens */
-  background: none;
-  border: none;
-  font-size: 1.8rem;
-  cursor: pointer;
-  color: var(--primary-color);
-  padding: 6px 10px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.menu-toggle:hover {
-  background-color: rgba(37, 99, 235, 0.15);
-}
-
-/* ===== Responsive Styles for Navigation ===== */
-@media (max-width: 768px) {
-  /* Show toggle button */
   .menu-toggle {
     display: block;
   }
 
-  /* Hide nav menu by default */
-  header nav {
-    width: 100%;
-    max-height: 0;
-    overflow: hidden;
+  nav {
+    display: none;
     flex-direction: column;
-    gap: 0;
-    transition: max-height 0.3s ease;
-    border-top: 1px solid rgba(0,0,0,0.1);
+    background-color: var(--header-bg, #f8f9fa);
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    padding: 1rem;
+    border-radius: 0 0 10px 10px;
   }
 
-  /* Show nav menu when active */
-  header nav.active {
-    max-height: 500px; /* Enough to show all links */
-    overflow: visible;
-    padding: 10px 0;
+  nav.active {
+    display: flex;
   }
 
-  header nav a {
-    padding: 12px 20px;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    white-space: normal;
-  }
-
-  header nav a:last-child {
-    border-bottom: none;
-  }
-
-  /* Adjust actions container */
   .actions {
-    width: 100%;
-    justify-content: flex-start;
+    display: none;
   }
 }
 
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.1rem;
+  }
 
+  .cv-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+}
