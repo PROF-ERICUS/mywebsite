@@ -42,4 +42,11 @@ document.getElementById('contactForm').addEventListener('submit', function(event
       console.error('EmailJS error:', error);
     });
 });
+const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('header nav');
+
+menuToggle.addEventListener('click', () => {
+  nav.classList.toggle('active');
+});
+
 
