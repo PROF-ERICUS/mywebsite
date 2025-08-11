@@ -206,21 +206,28 @@ body.dark-theme footer {
   border-top-color: #444;
 }
 
-/* ===== Responsive Updates ===== */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
+    position: relative;
+    z-index: 1100;
   }
 
   nav {
+    position: absolute;
+    top: 60px; /* match header height */
+    left: 0;
     width: 100%;
-    max-height: 0;
-    overflow: hidden;
+    background: var(--bg-color, #fff);
     flex-direction: column;
     gap: 0;
-    border-top: 1px solid #ddd;
+    max-height: 0;
+    overflow: hidden;
     opacity: 0;
     transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    border-top: 1px solid #ddd;
   }
 
   nav.active {
@@ -231,8 +238,10 @@ body.dark-theme footer {
   }
 
   nav a {
-    padding: 12px 20px;
+    display: block;
+    padding: 15px 20px;
     border-bottom: 1px solid #eee;
+    text-align: left;
   }
 
   nav a:last-child {
@@ -240,8 +249,6 @@ body.dark-theme footer {
   }
 
   .actions {
-    width: 100%;
-    justify-content: flex-start;
+    display: none; /* hide top-right actions on mobile */
   }
 }
-
