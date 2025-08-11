@@ -34,8 +34,12 @@ themeToggle?.addEventListener("click", () => {
     }
 });
 
-// Load theme preference on page load
-if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark-theme");
-    themeToggle.textContent = "☀️";
+const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('header nav');
+
+menuToggle.addEventListener('click', () => {
+  nav.classList.toggle('active');
+});
+
+
 }
