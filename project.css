@@ -170,14 +170,11 @@ footer {
 /* ===== Mobile Menu Toggle Button ===== */
 .menu-toggle {
   display: none;
+  font-size: 1.5rem;
   background: none;
   border: none;
-  font-size: 1.8rem;
+  color: var(--text-color);
   cursor: pointer;
-  color: #2c3e50;
-  padding: 6px 10px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
 }
 
 .menu-toggle:hover {
@@ -247,3 +244,4 @@ body.dark-theme footer {
     justify-content: flex-start;
   }
 }
+
