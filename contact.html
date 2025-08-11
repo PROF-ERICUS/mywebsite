@@ -5,49 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Eric Andoh — Portfolio</title>
   <meta name="description" content="Eric Andoh — Software Developer & Electrical Engineer. Portfolio showcasing projects, skills, and contact." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="contact.css" />
-
   
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- CSS -->
+  <link rel="stylesheet" href="contact.css" />
 </head>
 <body>
- <header>
-        <div class="logo">Eric Andoh</div>
-   <button class="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
+  <header>
+    <div class="logo">Eric Andoh</div>
 
-        <nav>
-            <a href="index.html" class="active">Home</a>
-            <a href="about.html">About</a>
-            <a href="project.html">Projects</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-        <div class="actions">
-            <button id="theme-toggle">🌙</button>
-            <a href="cv/Eric_Andoh_CV.pdf" download class="cv-btn">Download CV</a>
-        </div>
-    </header>
+    <!-- Mobile menu toggle -->
+    <button class="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
 
-  <section class="content">
+    <!-- Navigation -->
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="project.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button id="theme-toggle" aria-label="Toggle Theme">🌙</button>
+      <a href="cv/Eric_Andoh_CV.pdf" download class="cv-btn">Download CV</a>
+    </div>
+  </header>
+
+  <main class="content">
     <h2>Contact Me</h2>
-   <form action="https://formspree.io/f/manbazke" method="POST">
-  <input type="text" name="name" placeholder="Your Name" required />
-  <input type="email" name="email" placeholder="Your Email" required />
-  <textarea name="message" placeholder="Your Message" required></textarea>
-  <button type="submit">Send Message</button>
-</form>
-
-
-  </section>
+    <form id="contactForm" action="https://formspree.io/f/manbazke" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </main>
 
   <footer>
-   <footer>
     <p>&copy; <span id="currentYear"></span> Eric Andoh. All rights reserved.</p>
-</footer>
-
   </footer>
 
+  <!-- Scripts -->
   <script src="contact.js"></script>
 </body>
 </html>
-
