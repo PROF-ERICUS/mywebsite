@@ -11,6 +11,7 @@ body {
   background: var(--bg-color);
   color: var(--text-color);
   transition: background 0.3s, color 0.3s;
+  font-size: 16px; /* base font size */
 }
 
 /* ===== Theme Colors ===== */
@@ -38,31 +39,50 @@ header {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--border-color);
+  flex-wrap: wrap; /* allow wrapping on small screens */
+  gap: 10px;
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary-color);
+  flex: 1 1 auto;
+  min-width: 150px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  flex: 2 1 400px;
+  min-width: 200px;
 }
 
 nav a {
-  margin: 0 15px;
-  text-decoration: none;
   color: var(--text-color);
   font-weight: 500;
+  text-decoration: none;
   transition: color 0.3s;
+  white-space: nowrap;
+  padding: 6px 10px;
+  border-radius: 4px;
 }
 
 nav a:hover,
 nav a.active {
   color: var(--primary-color);
+  background-color: rgba(0, 119, 255, 0.1);
 }
 
 .actions {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  min-width: 120px;
 }
 
 .cv-btn {
@@ -72,6 +92,7 @@ nav a.active {
   text-decoration: none;
   border-radius: 5px;
   transition: background 0.3s;
+  white-space: nowrap;
 }
 
 .cv-btn:hover {
@@ -83,6 +104,14 @@ nav a.active {
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
+  color: var(--primary-color);
+  padding: 6px 8px;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+#theme-toggle:hover {
+  background: rgba(0, 119, 255, 0.15);
 }
 
 /* ===== Content ===== */
@@ -142,59 +171,105 @@ footer {
   background: var(--card-bg);
 }
 
-/* ===== Responsive ===== */
+/* ===== Responsive Enhancements ===== */
+
+/* Large tablets and smaller desktops */
+@media (max-width: 1024px) {
+  header {
+    padding: 15px 5%;
+  }
+  nav a {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+  section.content {
+    max-width: 90%;
+    margin: 40px auto;
+    padding: 15px;
+  }
+}
+
+/* Tablets and large phones */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
     align-items: flex-start;
   }
   nav {
-    margin: 10px 0;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  nav a {
+    padding: 6px 8px;
   }
   section.content {
     margin: 30px 15px;
+    padding: 15px;
+  }
+  .actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+/* Very small devices (phones) */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  nav a {
+    font-size: 0.85rem;
+    padding: 6px 6px;
+  }
+  .cv-btn {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  section.content {
+    margin: 20px 10px;
+    padding: 10px;
   }
 }
 
 /* ===== Theme Toggle Button ===== */
 #theme-toggle {
-    cursor: pointer;
-    border: none;
-    background: var(--primary-color);
-    color: white;
-    font-size: 1rem;
-    padding: 8px 14px;
-    border-radius: 30px;
-    transition: background 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  border: none;
+  background: var(--primary-color);
+  color: white;
+  font-size: 1rem;
+  padding: 8px 14px;
+  border-radius: 30px;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 #theme-toggle:hover {
-    background: var(--primary-dark);
-    transform: scale(1.05);
+  background: var(--primary-dark);
+  transform: scale(1.05);
 }
 
 /* ===== Dark Theme Styles ===== */
 body.dark-theme {
-    --primary-color: #1e1e2f;
-    --primary-dark: #151520;
-    --text-color: #e0e0e0;
-    --background-color: #121212;
-    --card-bg: #1f1f2e;
+  --primary-color: #1e1e2f;
+  --primary-dark: #151520;
+  --text-color: #e0e0e0;
+  --background-color: #121212;
+  --card-bg: #1f1f2e;
 }
 
 body {
-    --primary-color: #007BFF;
-    --primary-dark: #0056b3;
-    --text-color: #222;
-    --background-color: #f4f4f4;
-    --card-bg: white;
-    background: var(--background-color);
-    color: var(--text-color);
+  --primary-color: #007BFF;
+  --primary-dark: #0056b3;
+  --text-color: #222;
+  --background-color: #f4f4f4;
+  --card-bg: white;
+  background: var(--background-color);
+  color: var(--text-color);
 }
 
 /* Apply to cards, sections, etc. */
 .card, section, footer, header {
-    background: var(--card-bg);
-    transition: background 0.3s ease, color 0.3s ease;
+  background: var(--card-bg);
+  transition: background 0.3s ease, color 0.3s ease;
 }
-
