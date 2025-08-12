@@ -14,109 +14,122 @@ body {
   flex-direction: column;
   min-height: 100vh;
   font-size: 16px;
+  
 }
 
-/* ===== Header ===== */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 5%;
-  background-color: var(--bg-color);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.logo {
-  font-size: 1.4rem;
-  font-weight: 800;
-  color: #2c3e50;
-  flex: 1 1 150px;
-  min-width: 140px;
+.menu-btn {
+    font-size: 28px;
+    cursor: pointer;
+    border: none;
+    background: none;
 }
 
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  flex: 2 1 400px;
-  justify-content: center;
-  min-width: 220px;
-  transition: all 0.3s ease;
+/* Force sidebar to be fully hidden off-screen */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -300px; /* Move fully outside view */
+    height: 100%;
+    width: 260px;
+    background: black;
+    color: white;
+    transition: left 0.3s ease;
+    z-index: 10;
+    padding: 15px;
+    overflow-y: auto; /* If content exceeds height */
 }
 
-nav a {
-  font-weight: 500;
-  color: #555;
-  text-decoration: none;
-  padding: 6px 10px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  white-space: nowrap;
+/* When active, bring it into view */
+.side-menu.active {
+    left: 0;
 }
 
-nav a:hover,
-nav a.active {
-  color: #0077cc;
-  background-color: rgba(0, 119, 204, 0.1);
+/* Overlay hidden by default */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none; /* Start hidden */
+    z-index: 9;
 }
 
-.actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex: 1 1 auto;
-  justify-content: flex-end;
-  min-width: 120px;
+.menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
-#theme-toggle {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: #2c3e50;
-  padding: 6px 8px;
-  border-radius: 50%;
-  transition: background 0.3s ease;
+.menu-header img {
+    height: 30px;
 }
 
-#theme-toggle:hover {
-  background-color: rgba(0, 119, 204, 0.15);
+.close-btn {
+    font-size: 28px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
 }
 
-.cv-btn {
-  background-color: #0077cc;
-  color: white;
-  padding: 8px 14px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s ease;
-  white-space: nowrap;
+/* Menu Links */
+.menu-section {
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding: 10px 0;
 }
 
-.cv-btn:hover {
-  background-color: #005fa3;
+.dropdown-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+    width: 100%;
+    font-size: 16px;
 }
 
-/* ===== Buttons ===== */
-.btn {
-  display: inline-block;
-  background-color: #007bff;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: background-color 0.3s ease;
+.dropdown-content {
+    display: none;
+    padding-left: 10px;
+    font-size: 14px;
+    margin-top: 5px;
 }
 
-.btn:hover {
-  background-color: #0056b3;
+.dropdown-content a {
+    display: block;
+    color: #bbb;
+    text-decoration: none;
+    padding: 5px 0;
+}
+
+.dropdown-content a:hover {
+    color: white;
+}
+
+.simple-link {
+    color: white;
+    text-decoration: none;
+}
+.header img,
+.menu-header img {
+    width: 90px;
+    height: auto;
 }
 
 /* ===== Content ===== */
@@ -158,53 +171,98 @@ nav a.active {
   margin-bottom: 10px;
 }
 
-/* ===== Footer ===== */
-footer {
-  text-align: center;
-  padding: 15px;
-  font-size: 0.9rem;
-  border-top: 1px solid #ddd;
-  background: #fff;
-}
-
-/* ===== Mobile Menu Toggle Button ===== */
-.menu-toggle {
-  display: none;
-  font-size: 1.5rem;
-  background: none;
-  border: none;
-  color: var(--text-color);
+.open-menu-btn {
+  margin-top: 20px;
+  font-size: 16px;
+  padding: 10px 25px;
   cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
 }
 
-.menu-toggle:hover {
-  background-color: rgba(0, 119, 204, 0.15);
+.open-menu-btn:hover {
+  background-color: #0056b3;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #222;
+  color: #eee;
+  padding: 20px 15px;
+  text-align: center;
+  font-size: 14px;
+  z-index: 1000; /* make sure it stays on top */
 }
 
-/* ===== Dark Theme ===== */
-body.dark-theme {
-  background-color: #1e1e1e;
-  color: #ddd;
+
+.footer-nav {
+  margin-bottom: 15px;
 }
 
-body.dark-theme header {
-  background-color: #2c2c2c;
-  border-bottom-color: #444;
+.footer-nav a {
+  color: #eee;
+  margin: 0 12px;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
-body.dark-theme nav a {
+.footer-nav a:hover {
+  color: #007bff;
+}
+
+.contact-us {
+  margin-bottom: 15px;
+}
+
+.contact-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.contact-link:hover {
+  color: #0056b3;
+}
+
+copyright {
+  font-size: 13px;
   color: #ccc;
 }
 
-body.dark-theme nav a.active,
-body.dark-theme nav a:hover {
-  background-color: rgba(0, 119, 204, 0.2);
+/* Responsive for smaller screens */
+@media (max-width: 480px) {
+  .footer-nav a {
+    display: block;
+    margin: 8px 0;
+  }
+  
+  .footer {
+    font-size: 13px;
+  }
+}
+/* ===== Live Demo Button ===== */
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-body.dark-theme footer {
-  background-color: #2c2c2c;
-  border-top-color: #444;
+.btn:hover {
+  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+  transform: scale(1.05);
 }
+
+
 
 /* ===== Responsive Updates ===== */
 @media (max-width: 768px) {
